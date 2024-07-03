@@ -40,7 +40,7 @@ public class UserModel implements Serializable {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     UserType type;
-    @Column(length = 10)
+    @Column(length = 11)
     String phoneNumber;
     @Column(length = 11, nullable = false, unique = true)
     String cpf;

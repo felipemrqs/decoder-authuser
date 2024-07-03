@@ -6,6 +6,7 @@ import com.ead.authuser.services.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -44,7 +45,7 @@ public class UserController {
     }
 
     @PutMapping("{uuid}")
-    public ResponseEntity<Object> updateUser(@PathVariable UUID uuid, @RequestBody @JsonView(UserDto.UserView.UserPut.class) UserDto userDto) {
+    public ResponseEntity<Object> updateUser(@PathVariable UUID uuid, @RequestBody @Validated(UserDto.UserView.UserPut.class) @JsonView(UserDto.UserView.UserPut.class) UserDto userDto) {
         var userModelOptional = userService.findById(uuid);
         if (userModelOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -59,7 +60,7 @@ public class UserController {
     }
 
     @PutMapping("{uuid}/password")
-    public ResponseEntity<Object> updateUserPassword(@PathVariable UUID uuid, @RequestBody @JsonView(UserDto.UserView.PasswordPut.class) UserDto userDto) {
+    public ResponseEntity<Object> updateUserPassword(@PathVariable UUID uuid, @RequestBody @Validated(UserDto.UserView.PasswordPut.class) @JsonView(UserDto.UserView.PasswordPut.class) UserDto userDto) {
         var userModelOptional = userService.findById(uuid);
         if (userModelOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -75,7 +76,7 @@ public class UserController {
     }
 
     @PutMapping("{uuid}/image")
-    public ResponseEntity<Object> updateUserImage(@PathVariable UUID uuid, @RequestBody @JsonView(UserDto.UserView.ImagePut.class) UserDto userDto) {
+    public ResponseEntity<Object> updateUserImage(@PathVariable UUID uuid, @RequestBody @Validated(UserDto.UserView.ImagePut.class) @JsonView(UserDto.UserView.ImagePut.class) UserDto userDto) {
         var userModelOptional = userService.findById(uuid);
         if (userModelOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
