@@ -22,33 +22,46 @@ import java.util.UUID;
 public class UserModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    UUID id;
+    private UUID id;
+
     @Column(unique = true, nullable = false, length = 50)
     String userName;
+
     @Column(unique = true, nullable = false, length = 50)
     String email;
+
     @JsonIgnore
     @Column(nullable = false, length = 50)
     String password;
+
     @Column(nullable = false, length = 50)
     String fullName;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     UserStatus status;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     UserType type;
+
     @Column(length = 11)
     String phoneNumber;
+
     @Column(length = 11, nullable = false, unique = true)
     String cpf;
+
+    @Column
     String imageUrl;
+
     @CreationTimestamp
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
     LocalDateTime createdAt;
+
     @UpdateTimestamp
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
