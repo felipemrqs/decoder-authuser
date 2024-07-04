@@ -28,42 +28,42 @@ public class UserModel implements Serializable {
     private UUID id;
 
     @Column(unique = true, nullable = false, length = 50)
-    String userName;
+    private String userName;
 
     @Column(unique = true, nullable = false, length = 50)
-    String email;
+    private String email;
 
     @JsonIgnore
     @Column(nullable = false, length = 50)
-    String password;
+    private String password;
 
     @Column(nullable = false, length = 50)
-    String fullName;
+    private String fullName;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    UserStatus status;
+    private UserStatus status;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    UserType type;
+    private UserType type;
 
     @Column(length = 11)
-    String phoneNumber;
+    private String phoneNumber;
 
     @Column(length = 11, nullable = false, unique = true)
-    String cpf;
+    private String cpf;
 
     @Column
-    String imageUrl;
+    private String imageUrl;
 
     @CreationTimestamp
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
-    LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
-    LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 }
