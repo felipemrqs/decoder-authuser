@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
+
+    @Override
+    public Page<UserModel> findByCourseId(UUID courseId, Pageable pageable) {
+        return userRepository.findUsersByCourseId(courseId, pageable);
+    }
 }

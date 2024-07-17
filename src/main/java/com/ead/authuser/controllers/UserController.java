@@ -28,8 +28,11 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<UserModel>> getAll(@PageableDefault Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.findAll(pageable));
+    public ResponseEntity<Page<UserModel>> getAll(@RequestParam(required = false) UUID courseId, @PageableDefault Pageable pageable) {
+        return  ResponseEntity.ok(
+                Optional.ofNullable(courseId)
+                        .map(uuid -> userService.findByCourseId(uuid, pageable))
+                        .orElseGet(() -> userService.findAll(pageable)));
     }
 
     @GetMapping("/{uuid}")

@@ -19,4 +19,6 @@ public interface UserService {
     boolean existsByUsername(String username);
 
     boolean existsByEmail(String email);
+
+    Page<UserModel> findByCourseId(UUID courseId, Pageable pageable);
 }
